@@ -15,7 +15,7 @@ node -v # should print `v18.20.5`
 npm -v # should print `10.8.2`
 ```
 
-## Getting Started
+## Getting the Project Running
 
 First, clone the repository (detailed steps using GitHub Desktop below)
 
