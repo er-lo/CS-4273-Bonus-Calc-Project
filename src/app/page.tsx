@@ -7,8 +7,18 @@ export default function Home() {
   const [calculatorInput, setCalculatorInput] = useState("");
 
   const handleButtonClick = (character: string) => {
-    // adds whatever is added into the calculator onto the "display"
-    setCalculatorInput((prev) => prev + character);
+    if (character === 'C') {
+      // clear the last number
+      const currentLength = calculatorInput.length;
+      let tempString = calculatorInput.substring(0, currentLength - 1);
+      setCalculatorInput(tempString);
+    } else if (character === 'AC') {
+      // completely clear display
+      setCalculatorInput("")
+    } else {
+      // adds whatever is added into the calculator onto the "display"
+      setCalculatorInput((prev) => prev + character);
+    }
   };
 
   return (
