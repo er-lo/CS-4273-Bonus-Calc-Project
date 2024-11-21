@@ -31,6 +31,22 @@ export default function Home() {
       } catch (error) {
         alert("An error occurred while calculating the square root.");
       }
+    } else if (character === "±") {
+      // Toggle the sign of the number
+      try {
+        if (calculatorInput === "") {
+          alert("Please enter a number first!");
+          return;
+        }
+        const number = parseFloat(calculatorInput);
+        if (isNaN(number)) {
+          alert("Invalid input! Please enter a valid number.");
+          return;
+        }
+        setCalculatorInput((-1 * number).toString());
+      } catch (error) {
+        alert("An error occurred while toggling the sign.");
+      }
     } else if (character === "=") {
       // Evaluate the input
       try {
@@ -43,8 +59,19 @@ export default function Home() {
         alert("Invalid expression! Please check your input.");
       }
     } else {
-      // Append the clicked character to the input
-      setCalculatorInput((prev) => prev + character);
+      // Append the clicked character to the input, but limit to 8 digits
+      setCalculatorInput((prev) => {
+        // Count the number of digits currently in the input
+        const digitCount = prev.replace(/[^0-9]/g, "").length;
+
+        // Allow appending only if the digit count is less than 8
+        if (digitCount >= 8) {
+          alert("Maximum input limit of 8 digits reached.");
+          return prev;
+        }
+
+        return prev + character;
+      });
     }
   };
 
@@ -76,4 +103,4 @@ export default function Home() {
       </div>
     </div>
   );
-} // This is a test
+}
