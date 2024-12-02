@@ -43,7 +43,7 @@ export default function Home() {
           alert("logs of negative numbers is not allowed.");
           return;
         }
-        setCalculatorInput(Math.log(number).toString());
+        setCalculatorInput((Math.log(number)/Math.log(10)).toString());
       } catch (error) {
         alert("An error occurred while calculating the log.");
       }
