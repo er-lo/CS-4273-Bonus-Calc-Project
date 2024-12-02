@@ -6,6 +6,33 @@ export default function Home() {
 
   const [calculatorInput, setCalculatorInput] = useState("");
 
+  const customEvaluator = (calcInput: string) => {
+    // need to break the string into an array of three parts where the middle position is the operand
+    const regex = /(\d+\.\d+|\d+|\+|\-|\*|\/)/g;
+    const stringSplit = calcInput.match(regex);
+
+    console.log(stringSplit);
+    // assuming we'll only let two number values at a time 
+    if (!stringSplit) {
+      setCalculatorInput("ERR");
+      alert("Invalid input! Please enter a valid expression.");
+      return;
+    }
+    let firstValue = stringSplit[0];
+    let operand = stringSplit[1];
+    let secondValue = stringSplit[2];
+
+    if (operand === '*') {
+      return parseFloat(firstValue) * parseFloat(secondValue);
+    } else if (operand === '/') {
+      return parseFloat(firstValue) / parseFloat(secondValue);
+    } else if (operand === '-') {
+      return parseFloat(firstValue) - parseFloat(secondValue);
+    } else if (operand === '+') {
+      return parseFloat(firstValue) + parseFloat(secondValue);
+    }
+  }
+
   const handleButtonClick = (character: string) => {
     console.log("Button clicked:", character); // Debugging: Log button click
 
@@ -32,7 +59,7 @@ export default function Home() {
         alert("An error occurred while calculating the square root.");
       }
     } else if (character === "log") {
-      // Calculate the square root immediately
+      // Calculate log immediately
       try {
         const number = parseFloat(calculatorInput);
         if (isNaN(number)) {
@@ -66,12 +93,18 @@ export default function Home() {
     } else if (character === "=") {
       // Evaluate the input
       try {
-        console.log("Evaluating input:", calculatorInput); // Debugging: Log input to evaluate
-        const result = eval(calculatorInput); // Evaluates valid math expressions
+        const result = customEvaluator(calculatorInput); // Evaluates valid math expressions
         console.log("Result:", result); // Debugging: Log the result
-        setCalculatorInput(result.toString()); // Update display with result
+        if (result !== undefined) {
+          if (result.toString().length >= 8) {
+            setCalculatorInput("ERR");
+          } else {
+            setCalculatorInput(result.toString());
+          }
+        } else {
+          alert("Invalid expression! Please check your input.");
+        }
       } catch (error) {
-        console.error("Evaluation error:", error); // Debugging: Log error
         alert("Invalid expression! Please check your input.");
       }
     } else {
@@ -82,7 +115,6 @@ export default function Home() {
 
         // Allow appending only if the digit count is less than 8
         if (digitCount >= 8) {
-          alert("Maximum input limit of 8 digits reached.");
           return prev;
         }
 
