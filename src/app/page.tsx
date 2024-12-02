@@ -31,6 +31,22 @@ export default function Home() {
       } catch (error) {
         alert("An error occurred while calculating the square root.");
       }
+    } else if (character === "log") {
+      // Calculate the square root immediately
+      try {
+        const number = parseFloat(calculatorInput);
+        if (isNaN(number)) {
+          alert("Invalid input! Please enter a number first.");
+          return;
+        }
+        if (number < 0) {
+          alert("logs of negative numbers is not allowed.");
+          return;
+        }
+        setCalculatorInput(Math.log(number).toString());
+      } catch (error) {
+        alert("An error occurred while calculating the log.");
+      }
     } else if (character === "±") {
       // Toggle the sign of the number
       try {
