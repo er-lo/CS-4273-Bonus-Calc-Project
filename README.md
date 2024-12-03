@@ -1,4 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Scientific Calculator Project
+Bonus Project for CS 4273
+
+## Contributors
+- [Erick Lopez](https://github.com/er-lo)
+- [Ryeleigh Avila](https://github.com/RyeleighAvila)
+- [Priscilla Devadhas](https://github.com/LillyDeva)
+
+## Overview
+This project is a scientific calculator developed to help understand git and use it as a team. The project was build using Next.js, and styled with TailwindCSS for a modern, responsive design. The calculator itself wasn't the main point of the assignment but rather using git to practice collaborative software development.
+
+## Project Structure
+```
+CS-4273-Bonus-Calc-Project/
+│
+├── src/                
+│     └── app/
+│           └── page.tsx   # Source code
+└── README.md              # Project overview
+```
+
+## Deployment
+The project is hosted on Vercel for easy access and testing.
+- Live Demo: [Click Here](https://cs-4273-bonus-calc-project.vercel.app/)
+
+To deploy the application locally see the steps below.
 
 ## Getting Mac Set Up for Development with Next.js
 ```bash
@@ -39,8 +64,6 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Creating Branches and PRs
 Steps to Create a Branch and Open a PR in GitHub Desktop
